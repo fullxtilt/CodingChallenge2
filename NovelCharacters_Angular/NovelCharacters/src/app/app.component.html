@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>Fictional Characters</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/character-list'"> Character List </a>
+        <a mat-button [routerLink]="'/add-character'"> Add Character </a>
+        <a mat-button [routerLink]="'/modify-character'"> Modify Character </a>
+      </div>
+    </mat-toolbar-row>
+  
+</mat-toolbar>
+
+<router-outlet></router-outlet>

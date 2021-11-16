@@ -1,0 +1,30 @@
+<div class="container">
+    <mat-tab-group>
+        <mat-tab label="Add Your Favorite Fictional Character">
+            <!-- Register character form -->
+            <form [formGroup]="charForm" (ngSubmit)="onSubmitAdd()">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Race</mat-label>
+                    <input type="text" matInput formControlName="race">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <input type="text" matInput formControlName="gender">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="description">
+                </mat-form-field>
+                
+                <button mat-button [disabled]='!charForm.valid'>Submit</button>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+</div>

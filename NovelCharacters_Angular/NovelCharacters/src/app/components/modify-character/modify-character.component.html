@@ -1,0 +1,50 @@
+<div class="container">
+    <!-- Character select -->
+    <mat-form-field appearance="fill">
+        <mat-label>Select a character</mat-label>
+        <mat-select (selectionChange)="onCharacterSelect($event)">
+            <mat-option *ngFor="let character of characters" [value]="character">
+                {{character.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Update and delete tab groups -->
+    <mat-tab-group>
+        <!-- Update tab -->
+        <mat-tab label="Update">
+            <form [formGroup]="charForm" (ngSubmit)="onSubmitModify()">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Race</mat-label>
+                    <input type="text" matInput formControlName="race">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <input type="text" matInput formControlName="gender">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="description">
+                </mat-form-field>
+                
+                <button mat-button [disabled]='!charForm.valid'>Submit</button>
+            </form>
+            <div *ngIf="aCharacterWasUpdated">
+                <p style="color: white">Updated {{updatedCharacterName}}</p>
+            </div>
+        </mat-tab>
+        <!-- Delete tab -->
+        <mat-tab label="Delete">
+            <button mat-button [disabled]='!targetCharacter' (click)="onDeleteCharacter()">Delete Character</button>
+            <div *ngIf="aCharacterWasDeleted">
+                <p style="color: white">Bye bye, {{deletedCharacterName}}</p>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
